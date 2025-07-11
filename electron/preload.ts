@@ -29,6 +29,10 @@ const electronAPI = {
   // 处理用户选择
   handleChoice: (choiceId: 'A' | 'B', choiceData: any, situation: string) => 
     ipcRenderer.invoke('handle-choice', choiceId, choiceData, situation),
+
+  // 清除所有缓存
+  clearAllCache: () => 
+    ipcRenderer.invoke('clear-all-cache'),
 }
 
 // 安全地暴露API到window对象

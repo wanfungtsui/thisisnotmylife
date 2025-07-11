@@ -18,4 +18,18 @@ export function loadGameState(): GameState | null {
 
 export function clearGameState() {
   localStorage.removeItem(STORAGE_KEY);
+}
+
+export function clearAllCache() {
+  try {
+    // 清除所有 localStorage 项
+    localStorage.clear();
+    
+    // 清除所有 sessionStorage 项
+    sessionStorage.clear();
+    
+    console.log('前端所有缓存已清除');
+  } catch (error) {
+    console.error('清除前端缓存时发生错误:', error);
+  }
 } 

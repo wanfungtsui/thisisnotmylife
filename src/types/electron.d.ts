@@ -36,6 +36,11 @@ export interface ElectronAPI {
     data?: AIResponse
     error?: string
   }>
+  clearAllCache: () => Promise<{
+    success: boolean
+    data?: string
+    error?: string
+  }>
 }
 
 declare global {

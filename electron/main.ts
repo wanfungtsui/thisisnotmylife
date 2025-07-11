@@ -17,6 +17,9 @@ class App {
     this.deepSeekService = new DeepSeekService(this.storageService)
     
     app.whenReady().then(() => {
+      // 每次启动时清除所有缓存
+      this.clearAllCaches()
+      
       this.createWindow()
       
       app.on('activate', () => {
@@ -33,6 +36,38 @@ class App {
     })
 
     this.setupIpcHandlers()
+  }
+
+  /**
+   * 清除所有缓存
+   */
+  private clearAllCaches(): void {
+    try {
+      console.log('正在清除所有缓存...')
+      
+      // 清除后端存储缓存
+      this.storageService.clearAllCache()
+      
+      console.log('后端缓存已清除')
+    } catch (error) {
+      console.error('清除缓存时发生错误:', error)
+    }
+  }
+
+  /**
+   * 清除 Electron 缓存
+   */
+  private clearElectronCache(): void {
+    try {
+      if (this.mainWindow) {
+        console.log('正在清除 Electron 缓存...')
+        this.mainWindow.webContents.session.clearCache()
+        this.mainWindow.webContents.session.clearStorageData()
+        console.log('Electron 缓存已清除')
+      }
+    } catch (error) {
+      console.error('清除 Electron 缓存时发生错误:', error)
+    }
   }
 
   private createWindow(): void {
@@ -80,6 +115,8 @@ class App {
 
     this.mainWindow.once('ready-to-show', () => {
       this.mainWindow?.show()
+      // 窗口准备好后清除 Electron 缓存
+      this.clearElectronCache()
     })
   }
 
@@ -157,6 +194,18 @@ class App {
         return { success: true, data: response }
       } catch (error: any) {
         console.error('Handle choice error:', error)
+        return { success: false, error: error.message || String(error) }
+      }
+    })
+
+    // 清除所有缓存
+    ipcMain.handle('clear-all-cache', async () => {
+      try {
+        this.clearAllCaches()
+        this.clearElectronCache()
+        return { success: true, data: '所有缓存已清除' }
+      } catch (error: any) {
+        console.error('Clear all cache error:', error)
         return { success: false, error: error.message || String(error) }
       }
     })

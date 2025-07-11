@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { sendToAI } from '../api/ai';
-import { saveGameState, loadGameState, clearGameState } from '../api/storage';
+import { saveGameState, loadGameState, clearGameState, clearAllCache } from '../api/storage';
 import { GameState, DialogueEntry, AIChoice, AIResponse, OCEANScore, SkillCommand } from '../types';
 import { PersonalityPanel } from './PersonalityPanel';
 import { ChoiceButtons } from './ChoiceButtons';
@@ -54,6 +54,21 @@ export const Terminal: React.FC = () => {
   useEffect(() => {
     chatRef.current?.scrollTo(0, chatRef.current.scrollHeight);
   }, [game.dialogueHistory]);
+
+  // 启动时清除前端缓存
+  useEffect(() => {
+    // 每次启动时清除所有前端缓存
+    console.log('正在清除前端缓存...')
+    clearAllCache()
+    
+    // 重置游戏状态
+    setGame(defaultGameState)
+    setChoices([])
+    setError(null)
+    setInput('')
+    
+    console.log('前端缓存已清除')
+  }, [])
 
   // 启动/恢复游戏
   useEffect(() => {

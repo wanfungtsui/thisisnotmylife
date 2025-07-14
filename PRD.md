@@ -10,7 +10,7 @@
 
 ### 1.2 核心理念
 - **对话驱动：** 所有游戏内容通过自然语言对话展开
-- **人格建模：** 基于五大人格模型(OCEAN)动态评估用户性格发展
+- **人格建模：** 基于五大人格维度动态评估用户性格发展
 - **技能系统：** AI返回特定技能命令，模拟人生行为
 - **选择导向：** 每次对话AI提供A/B选择，影响故事走向
 - **本地存储：** 完整记录对话历史和人格变化，确保连贯性
@@ -61,14 +61,14 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
 
 ### 2.3 人格评估系统
 
-基于五大人格模型(OCEAN)进行动态评分：
+基于五大人格维度进行动态评分：
 
 #### 人格维度
-1. **开放性 (Openness)** - 好奇心、创造力、接受新事物
-2. **尽责性 (Conscientiousness)** - 自律、计划性、可靠性
-3. **外向性 (Extraversion)** - 社交性、活力、表达力
-4. **宜人性 (Agreeableness)** - 友善、合作、同理心
-5. **情绪稳定性 (Neuroticism)** - 情绪控制、压力应对
+1. **感官开放度 (Sensing Openness)** - 你对声音、光线、细节的察觉能力有多敏锐。世界在你眼中是放大的。
+2. **语言风格化 (Literal Communication)** - 你更偏好直接表达，对比喻和暗示的识别不太依赖。你更相信语言本身。
+3. **情绪节奏感 (Emotional Sync)** - 你和他人的情绪同步程度。有时你慢一拍，有时你像雷达超前接收一切。
+4. **聚焦强度 (Focus Gravity)** - 你对事物的专注力有多强。你可以在一个点上驻留很久，直到它成为宇宙中心。
+5. **社交摩擦力 (Social Friction)** - 你在社交中感受到的"难度系数"。你在表达、理解、进入社交节奏上需要多少调试。
 
 #### 评分机制
 - 初始值：每个维度50分（中性）
@@ -135,11 +135,11 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
       "text": "选择A的描述",
       "consequence": "选择A的后果",
       "personalityChange": {
-        "openness": 数值变化(-10到+10，精度为1),
-        "conscientiousness": 数值变化,
-        "extraversion": 数值变化,
-        "agreeableness": 数值变化,
-        "neuroticism": 数值变化
+        "sensingOpenness": 数值变化(-10到+10，精度为1),
+        "literalCommunication": 数值变化,
+        "emotionalSync": 数值变化,
+        "focusGravity": 数值变化,
+        "socialFriction": 数值变化
       }
     },
     {
@@ -147,11 +147,11 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
       "text": "选择B的描述", 
       "consequence": "选择B的后果",
       "personalityChange": {
-        "openness": 数值变化(-10到+10，精度为1),
-        "conscientiousness": 数值变化,
-        "extraversion": 数值变化,
-        "agreeableness": 数值变化,
-        "neuroticism": 数值变化
+        "sensingOpenness": 数值变化(-10到+10，精度为1),
+        "literalCommunication": 数值变化,
+        "emotionalSync": 数值变化,
+        "focusGravity": 数值变化,
+        "socialFriction": 数值变化
       }
     }
   ],
@@ -159,11 +159,11 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
     "currentAge": 0,
     "ageStage": "baby",
     "personalityTraits": {
-      "openness": 初始值,
-      "conscientiousness": 初始值,
-      "extraversion": 初始值,
-      "agreeableness": 初始值,
-      "neuroticism": 初始值
+      "sensingOpenness": 初始值,
+      "literalCommunication": 初始值,
+      "emotionalSync": 初始值,
+      "focusGravity": 初始值,
+      "socialFriction": 初始值
     }
   },
   "skillCommand": "可选的技能命令，如 /cry 或 /sleep"
@@ -188,11 +188,11 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
 ```json
 {
   "personalityTraits": {
-    "openness": 50,
-    "conscientiousness": 50,
-    "extraversion": 50,
-    "agreeableness": 50,
-    "neuroticism": 50
+    "sensingOpenness": 50,
+    "literalCommunication": 50,
+    "emotionalSync": 50,
+    "focusGravity": 50,
+    "socialFriction": 50
   },
   "birthInfo": {
     "date": "2024-01-01",
@@ -224,10 +224,10 @@ AI在对话中会智能生成技能命令，用 `"/" + "操作"` 格式表示。
   "aiResponse": "AI回复内容",
   "userChoice": "A" | "B",
   "skillCommand": "/eat",
-  "personalityChanges": {
-    "openness": 3,
-    "extraversion": -2
-  },
+      "personalityChanges": {
+      "sensingOpenness": 3,
+      "emotionalSync": -2
+    },
   "timeProgression": {
     "fromDate": "2024-01-01",
     "fromTime": "08:30",

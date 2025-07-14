@@ -6,19 +6,19 @@ interface Props {
 }
 
 const traitLabels: Record<keyof OCEANScore, string> = {
-  openness: '开放性',
-  conscientiousness: '尽责性',
-  extraversion: '外向性',
-  agreeableness: '亲和性',
-  neuroticism: '神经质',
+  sensingOpenness: '感官开放度',
+  literalCommunication: '语言风格化',
+  emotionalSync: '情绪节奏感',
+  focusGravity: '聚焦强度',
+  socialFriction: '社交摩擦力',
 };
 
 const traitColors: Record<keyof OCEANScore, string> = {
-  openness: '#7c3aed',
-  conscientiousness: '#0969da', 
-  extraversion: '#f85149',
-  agreeableness: '#3fb950',
-  neuroticism: '#f0883e',
+  sensingOpenness: '#7c3aed',      // 紫色 - 感官开放度
+  literalCommunication: '#0969da', // 蓝色 - 语言风格化
+  emotionalSync: '#f85149',        // 红色 - 情绪节奏感
+  focusGravity: '#3fb950',         // 绿色 - 聚焦强度
+  socialFriction: '#f0883e',       // 橙色 - 社交摩擦力
 };
 
 export const PersonalityPanel: React.FC<Props> = ({ ocean }) => (

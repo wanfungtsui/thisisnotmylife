@@ -8,11 +8,11 @@ import { validateApiKey, getApiKeyHelp } from '../config';
 import { ASCIIGenerator } from '../api/ascii';
 
 const initialOCEAN: OCEANScore = {
-  openness: 50,
-  conscientiousness: 50,
-  extraversion: 50,
-  agreeableness: 50,
-  neuroticism: 50,
+  sensingOpenness: 50,
+  literalCommunication: 50,
+  emotionalSync: 50,
+  focusGravity: 50,
+  socialFriction: 50,
 };
 
 // 默认的/start技能
@@ -168,12 +168,12 @@ export const Terminal: React.FC = () => {
 当前游戏状态：
 - 出生信息：${game.birthInfo.date} ${game.birthInfo.time} 于 ${game.birthInfo.location}
 - 当前时间：${game.currentTime.date} ${game.currentTime.time}，年龄：${game.currentTime.age}岁
-- 当前人格特质(OCEAN)：
-  开放性: ${game.ocean.openness}
-  尽责性: ${game.ocean.conscientiousness}  
-  外向性: ${game.ocean.extraversion}
-  宜人性: ${game.ocean.agreeableness}
-  情绪稳定性: ${game.ocean.neuroticism}
+- 当前人格特质：
+  感官开放度: ${game.ocean.sensingOpenness}
+  语言风格化: ${game.ocean.literalCommunication}  
+  情绪节奏感: ${game.ocean.emotionalSync}
+  聚焦强度: ${game.ocean.focusGravity}
+  社交摩擦力: ${game.ocean.socialFriction}
 - 已获得技能命令：
   ${skillsInfo}
 
@@ -224,13 +224,13 @@ export const Terminal: React.FC = () => {
     console.log('- personalityChange:', personalityChange);
     console.log('- 当前OCEAN:', game.ocean);
     
-    // 应用人格变化到当前OCEAN分数
+    // 应用人格变化到当前分数
     const newOcean: OCEANScore = {
-      openness: Math.max(0, Math.min(100, game.ocean.openness + (personalityChange.openness || 0))),
-      conscientiousness: Math.max(0, Math.min(100, game.ocean.conscientiousness + (personalityChange.conscientiousness || 0))),
-      extraversion: Math.max(0, Math.min(100, game.ocean.extraversion + (personalityChange.extraversion || 0))),
-      agreeableness: Math.max(0, Math.min(100, game.ocean.agreeableness + (personalityChange.agreeableness || 0))),
-      neuroticism: Math.max(0, Math.min(100, game.ocean.neuroticism + (personalityChange.neuroticism || 0)))
+      sensingOpenness: Math.max(0, Math.min(100, game.ocean.sensingOpenness + (personalityChange.sensingOpenness || 0))),
+      literalCommunication: Math.max(0, Math.min(100, game.ocean.literalCommunication + (personalityChange.literalCommunication || 0))),
+      emotionalSync: Math.max(0, Math.min(100, game.ocean.emotionalSync + (personalityChange.emotionalSync || 0))),
+      focusGravity: Math.max(0, Math.min(100, game.ocean.focusGravity + (personalityChange.focusGravity || 0))),
+      socialFriction: Math.max(0, Math.min(100, game.ocean.socialFriction + (personalityChange.socialFriction || 0)))
     };
     
     console.log('- 计算后的newOcean:', newOcean);

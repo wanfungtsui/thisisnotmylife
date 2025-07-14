@@ -1,10 +1,10 @@
-// OCEAN人格五维分数
+// 人格五维分数
 export interface OCEANScore {
-  openness: number;
-  conscientiousness: number;
-  extraversion: number;
-  agreeableness: number;
-  neuroticism: number;
+  sensingOpenness: number;      // 感官开放度
+  literalCommunication: number; // 语言风格化
+  emotionalSync: number;        // 情绪节奏感
+  focusGravity: number;         // 聚焦强度
+  socialFriction: number;       // 社交摩擦力
 }
 
 // 技能指令

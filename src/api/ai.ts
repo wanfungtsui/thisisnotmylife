@@ -28,11 +28,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
         age: 0
       },
       ocean: {
-        openness: 50,
-        conscientiousness: 50,
-        extraversion: 50,
-        agreeableness: 50,
-        neuroticism: 50
+        sensingOpenness: 50,
+        literalCommunication: 50,
+        emotionalSync: 50,
+        focusGravity: 50,
+        socialFriction: 50
       },
       choices: [
         {
@@ -40,11 +40,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
           text: '安静地观察周围',
           consequence: '你变得更加专注和谨慎',
           personalityChange: { 
-            openness: 0,
-            conscientiousness: 2, 
-            extraversion: 0,
-            agreeableness: 0,
-            neuroticism: -1 
+            sensingOpenness: 0,
+            literalCommunication: 2, 
+            emotionalSync: 0,
+            focusGravity: 0,
+            socialFriction: -1 
           }
         },
         {
@@ -52,11 +52,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
           text: '好奇地四处张望',
           consequence: '你对世界充满好奇心',
           personalityChange: { 
-            openness: 3, 
-            conscientiousness: 0,
-            extraversion: 1,
-            agreeableness: 0,
-            neuroticism: 0
+            sensingOpenness: 3, 
+            literalCommunication: 0,
+            emotionalSync: 1,
+            focusGravity: 0,
+            socialFriction: 0
           }
         }
       ],
@@ -82,11 +82,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
         age: currentAge
       },
       ocean: {
-        openness: 52,
-        conscientiousness: 48,
-        extraversion: 51,
-        agreeableness: 49,
-        neuroticism: 50
+        sensingOpenness: 52,
+        literalCommunication: 48,
+        emotionalSync: 51,
+        focusGravity: 49,
+        socialFriction: 50
       },
       choices: [
         {
@@ -94,11 +94,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
           text: '继续当前的行动',
           consequence: '你坚持自己的选择',
           personalityChange: { 
-            openness: 0,
-            conscientiousness: 1,
-            extraversion: 0,
-            agreeableness: 0,
-            neuroticism: 0
+            sensingOpenness: 0,
+            literalCommunication: 1,
+            emotionalSync: 0,
+            focusGravity: 0,
+            socialFriction: 0
           }
         },
         {
@@ -106,11 +106,11 @@ function createFallbackResponse(text: string, messages: any[]): AIResponse {
           text: '尝试不同的方式',
           consequence: '你变得更加开放',
           personalityChange: { 
-            openness: 2,
-            conscientiousness: 0,
-            extraversion: 0,
-            agreeableness: 0,
-            neuroticism: 0
+            sensingOpenness: 2,
+            literalCommunication: 0,
+            emotionalSync: 0,
+            focusGravity: 0,
+            socialFriction: 0
           }
         }
       ],
@@ -246,11 +246,11 @@ JSON格式要求：
     "age": 当前年龄数字
   },
   "ocean": {
-    "openness": 更新后的开放性分数,
-    "conscientiousness": 更新后的尽责性分数,
-    "extraversion": 更新后的外向性分数,
-    "agreeableness": 更新后的宜人性分数,
-    "neuroticism": 更新后的情绪稳定性分数
+    "sensingOpenness": 更新后的感官开放度分数,
+    "literalCommunication": 更新后的语言风格化分数,
+    "emotionalSync": 更新后的情绪节奏感分数,
+    "focusGravity": 更新后的聚焦强度分数,
+    "socialFriction": 更新后的社交摩擦力分数
   },
   "choices": [
     {
@@ -258,11 +258,11 @@ JSON格式要求：
       "text": "符合当前情境的选择A",
       "consequence": "选择A的具体后果",
       "personalityChange": {
-        "openness": 变化值(-15到+15，常规3-8分，重大选择10-15分),
-        "conscientiousness": 变化值(-15到+15),
-        "extraversion": 变化值(-15到+15),
-        "agreeableness": 变化值(-15到+15),
-        "neuroticism": 变化值(-15到+15)
+        "sensingOpenness": 变化值(-15到+15，常规3-8分，重大选择10-15分),
+        "literalCommunication": 变化值(-15到+15),
+        "emotionalSync": 变化值(-15到+15),
+        "focusGravity": 变化值(-15到+15),
+        "socialFriction": 变化值(-15到+15)
       }
     },
     {
@@ -270,11 +270,11 @@ JSON格式要求：
       "text": "符合当前情境的选择B", 
       "consequence": "选择B的具体后果",
       "personalityChange": {
-        "openness": 变化值(-15到+15，常规3-8分，重大选择10-15分),
-        "conscientiousness": 变化值(-15到+15),
-        "extraversion": 变化值(-15到+15),
-        "agreeableness": 变化值(-15到+15),
-        "neuroticism": 变化值(-15到+15)
+        "sensingOpenness": 变化值(-15到+15，常规3-8分，重大选择10-15分),
+        "literalCommunication": 变化值(-15到+15),
+        "emotionalSync": 变化值(-15到+15),
+        "focusGravity": 变化值(-15到+15),
+        "socialFriction": 变化值(-15到+15)
       }
     }
   ],
